@@ -1,0 +1,113 @@
+ class MainHero
+    {
+        private int x, y;
+        private int x1;
+        private int y1;
+        //private bool fl = true;
+        //private bool Fl
+        //{
+        //    get { return fl; }
+        //    set { fl = value; }
+        //}
+
+        public MainHero (int x, int y, int speedx,int speedy)
+        {
+            this.x = x;
+            this.y = y;
+            this.x1 = speedx;
+            this.y1 = speedy;
+        }
+
+        public void SetSteps(int speedx, int speedy)
+        {
+            this.x1 = speedx;
+            this.y1 = speedy;
+        }
+
+        public void WriteDown(Field f)
+        {
+            f.field[this.x, this.y] = '#';
+        }
+        public void TakeBack (Field f)
+        {
+            f.field[this.x, this.y] = ' ';
+        }
+
+        public void Movement(Field f)
+        {
+            if (f.PossibleToMove(this.x+this.x1,this.y+this.y1))
+            {
+                this.x += this.x1;
+                this.y += this.y1;
+            }
+        }
+
+    
+        public void ShootRight(Field f)
+        {
+            int i = 1;
+            
+            while(i<=4)
+            {
+                if ((this.y + i) < 20)
+                {
+                    if (f.field[this.x, this.y + i] == ' ') { i++; }
+                    else if (f.field[this.x, this.y + i] == '■') { f.field[this.x, this.y + i - 1] = '0'; break; }
+                    else if (f.field[this.x, this.y + i] == '$') { break; }
+                    else if (f.field[this.x, this.y + i] == '0') { break; }
+                }
+                else break;
+            }
+            if (i == 5) { f.field[this.x, this.y + i-1] = '0'; }
+        }
+        public void ShootLeft(Field f)
+        {
+            int i = 1;
+
+            while (i <= 4)
+            {
+                if ((this.y - i) > 0)
+                {
+                    if (f.field[this.x, this.y - i] == ' ') { i++; }
+                    else if (f.field[this.x, this.y - i] == '■') { f.field[this.x, this.y - i + 1] = '0'; break; }
+                    else if (f.field[this.x, this.y - i] == '$') { break; }
+                    else if (f.field[this.x, this.y - i] == '0') { break; }
+                }
+                else break;
+            }
+            if (i == 5) { f.field[this.x, this.y - i + 1] = '0'; }
+        }
+        public void ShootDown(Field f)
+        {
+            int i = 1;
+            while (i <= 4)
+            {
+                if ((this.x + i) < 20)
+                {
+                    if (f.field[this.x + i, this.y] == ' ') { i++; }
+                    else if (f.field[this.x + i, this.y] == '■') { f.field[this.x + i - 1, this.y] = '0'; break; }
+                    else if (f.field[this.x + i, this.y] == '$') { break; }
+                    else if (f.field[this.x +i , this.y] == '0') { break; }
+                }
+                else break;
+            }
+            if (i == 5) { f.field[this.x+i-1, this.y] = '0'; }
+        }
+        public void ShootUp(Field f)
+        {
+            int i = 1;
+
+            while (i <= 4)
+            {
+                if ((this.x - i) > 0)
+                {
+                    if (f.field[this.x - i, this.y] == ' ') { i++; }
+                    else if (f.field[this.x - i, this.y] == '■') { f.field[this.x - i + 1, this.y] = '0'; break; }
+                    else if (f.field[this.x - i, this.y] == '$') { break; }
+                    else if (f.field[this.x-i, this.y] == '0') { break; }
+                }
+                else break;
+            }
+            if (i == 5) { f.field[this.x - i + 1, this.y] = '0'; }
+        }
+    }
