@@ -1,0 +1,81 @@
+  class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.CursorVisible = false;
+            Field f = new Field(20, 20);
+            MainHero hero = new MainHero(0, 0, 0, 0);
+            Enemy e1 = new Enemy(7, 8);
+            Enemy e2 = new Enemy(12,14);
+            f.CreateObstacle( 4, 5); f.CreateObstacle(6, 7); f.CreateObstacle(5, 15); f.CreateObstacle(3, 12); f.CreateObstacle(10, 16);
+            f.CreateObstacle( 4, 6); f.CreateObstacle(7, 7); f.CreateObstacle(6, 15); f.CreateObstacle(3, 11); f.CreateObstacle(10, 15);
+            f.CreateObstacle( 4, 7); f.CreateObstacle(8, 7); f.CreateObstacle(7, 15); f.CreateObstacle(3, 10); f.CreateObstacle(10, 14);
+            f.CreateObstacle( 5, 4); f.CreateObstacle(9, 7); f.CreateObstacle(6, 10); f.CreateObstacle(3, 9); f.CreateObstacle(10, 13); 
+            f.CreateObstacle( 6, 4); f.CreateObstacle(10,7); f.CreateObstacle(7, 10); f.CreateObstacle(3, 8); f.CreateObstacle(10, 12);
+            f.CreateObstacle(8, 8); f.CreateObstacle(3, 2); f.CreateObstacle(8, 10); f.CreateObstacle(8, 4); f.CreateObstacle(10, 11);
+            f.CreateObstacle(8, 9); f.CreateObstacle(3, 1); f.CreateObstacle(3, 15); f.CreateObstacle(9, 4); f.CreateObstacle(10, 10);
+            f.CreateObstacle(2, 3); f.CreateObstacle(4, 5); f.CreateObstacle(4, 15); f.CreateObstacle(10, 4); f.CreateObstacle(11, 10);
+            f.CreateObstacle(3, 3); f.CreateObstacle(4, 6); f.CreateObstacle(3, 14); f.CreateObstacle(15, 15); f.CreateObstacle(12, 10);
+            f.CreateObstacle(1, 3); f.CreateObstacle(4, 7); f.CreateObstacle(3, 13); f.CreateObstacle(10, 17); f.CreateObstacle(13, 10);
+            f.CreateObstacle(13, 11); f.CreateObstacle(13, 12); f.CreateObstacle(13, 13); f.CreateObstacle(13, 14); f.CreateObstacle(14, 15);
+            f.CreateObstacle(13, 15); f.CreateObstacle(12, 15); f.CreateObstacle(5, 15); f.CreateObstacle(5, 15); f.CreateObstacle(5, 15);
+            ConsoleKeyInfo key = new ConsoleKeyInfo();
+            while (true)
+            {
+               
+                if (Console.KeyAvailable)
+                {
+                    key = Console.ReadKey(true);
+                    if (key.Key == ConsoleKey.RightArrow)
+                    {
+                        hero.SetSteps(0, 1);
+                    }
+                    else if (key.Key == ConsoleKey.LeftArrow)
+                    {
+                        hero.SetSteps(0, -1);
+                    }
+                    else if (key.Key == ConsoleKey.DownArrow)
+                    {
+                        hero.SetSteps(1, 0);
+                    }
+                    else if (key.Key == ConsoleKey.UpArrow)
+                    {
+                        hero.SetSteps(-1, 0);
+                    }
+                    else if (key.Key == ConsoleKey.D)
+                    {  
+                      hero.ShootRight(f); 
+                    }
+                    else if (key.Key == ConsoleKey.A)
+                    {
+                        hero.ShootLeft(f);
+                    }
+                    else if (key.Key == ConsoleKey.S)
+                    {
+                        hero.ShootDown(f);
+                    }
+                    else if (key.Key == ConsoleKey.W)
+                    {
+                        hero.ShootUp(f);
+                    }
+                    else if (key.Key == ConsoleKey.Escape)
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    hero.SetSteps(0, 0);
+                }
+                
+                hero.TakeBack(f);             
+                hero.Movement(f);
+                hero.WriteDown(f);
+                e1.WriteDown(f); e2.WriteDown(f);
+                f.CreateField();
+                Console.SetCursorPosition(0, 0);
+              
+            }            
+        }
+    }
+
