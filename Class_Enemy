@@ -1,0 +1,22 @@
+class Enemy
+    {
+        private int x, y;
+        private char ff='$';
+        public char  Ff
+            {
+            get { return ff; }
+            set { this.ff = value; }
+            }
+        public Enemy(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+            
+        }
+
+        public void WriteDown(Field f)
+        {
+            f.field[this.x, this.y] = ff;
+        }
+
+    }
