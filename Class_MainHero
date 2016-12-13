@@ -3,12 +3,7 @@
         private int x, y;
         private int x1;
         private int y1;
-        //private bool fl = true;
-        //private bool Fl
-        //{
-        //    get { return fl; }
-        //    set { fl = value; }
-        //}
+    
 
         public MainHero (int x, int y, int speedx,int speedy)
         {
@@ -53,7 +48,7 @@
                 {
                     if (f.field[this.x, this.y + i] == ' ') { i++; }
                     else if (f.field[this.x, this.y + i] == '■') { f.field[this.x, this.y + i - 1] = '0'; break; }
-                    else if (f.field[this.x, this.y + i] == '$') { break; }
+                    else if (f.field[this.x, this.y + i] == '$') { f.field[this.x, this.y+i] = '0'; break; }
                     else if (f.field[this.x, this.y + i] == '0') { break; }
                 }
                 else break;
@@ -70,7 +65,7 @@
                 {
                     if (f.field[this.x, this.y - i] == ' ') { i++; }
                     else if (f.field[this.x, this.y - i] == '■') { f.field[this.x, this.y - i + 1] = '0'; break; }
-                    else if (f.field[this.x, this.y - i] == '$') { break; }
+                    else if (f.field[this.x, this.y - i] == '$') { f.field[this.x, this.y-i] = '0'; break; }
                     else if (f.field[this.x, this.y - i] == '0') { break; }
                 }
                 else break;
@@ -86,7 +81,7 @@
                 {
                     if (f.field[this.x + i, this.y] == ' ') { i++; }
                     else if (f.field[this.x + i, this.y] == '■') { f.field[this.x + i - 1, this.y] = '0'; break; }
-                    else if (f.field[this.x + i, this.y] == '$') { break; }
+                    else if (f.field[this.x + i, this.y] == '$') { f.field[this.x +i, this.y] = '0'; break; }
                     else if (f.field[this.x +i , this.y] == '0') { break; }
                 }
                 else break;
@@ -103,7 +98,7 @@
                 {
                     if (f.field[this.x - i, this.y] == ' ') { i++; }
                     else if (f.field[this.x - i, this.y] == '■') { f.field[this.x - i + 1, this.y] = '0'; break; }
-                    else if (f.field[this.x - i, this.y] == '$') { break; }
+                    else if (f.field[this.x - i, this.y] == '$') { f.field[this.x - i, this.y] = '0'; break; }
                     else if (f.field[this.x-i, this.y] == '0') { break; }
                 }
                 else break;
