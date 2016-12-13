@@ -1,4 +1,4 @@
-class Enemy
+ class Enemy
     {
         private int x, y;
         private char ff='$';
@@ -7,6 +7,12 @@ class Enemy
             get { return ff; }
             set { this.ff = value; }
             }
+        public int GetX()
+        {
+            return x; 
+        }
+        public int GetY()
+        { return y; }
         public Enemy(int x, int y)
         {
             this.x = x;
@@ -16,6 +22,11 @@ class Enemy
 
         public void WriteDown(Field f)
         {
+            f.field[this.x, this.y] = ff;
+        }
+        public void Delete(Field f)
+        {
+            this.ff = '@';
             f.field[this.x, this.y] = ff;
         }
 
